@@ -20,6 +20,7 @@
 #include "admin/angel/Core_admin.h"
 #include "admin/angel/InterfaceWaiter.h"
 #include "admin/AuthorizedPasswords.h"
+#include "admin/Version_admin.h"
 #include "benc/Int.h"
 #include "benc/serialization/BencSerializer.h"
 #include "benc/serialization/standard/StandardBencSerializer.h"
@@ -293,6 +294,7 @@ int Core_main(int argc, char** argv)
     AuthorizedPasswords_init(admin, cryptoAuth, alloc);
     Admin_registerFunction("ping", adminPing, admin, false, NULL, admin);
     Admin_registerFunction("Core_exit", adminExit, logger, true, NULL, admin);
+	Version_admin_register(admin);
     Core_admin_register(addr.ip6.bytes, dt, logger, alloc, admin, eventBase);
     Security_admin_register(alloc, logger, admin);
     IpTunnel_admin_register(ipTun, admin, alloc);

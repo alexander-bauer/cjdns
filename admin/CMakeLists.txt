@@ -13,6 +13,7 @@
 add_library(cjdns-admin
     Admin.c
     AuthorizedPasswords.c
+	Version_admin.c
 )
 target_link_libraries(cjdns-admin
     crypto
