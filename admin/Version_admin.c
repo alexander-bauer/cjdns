@@ -19,13 +19,13 @@
 #include "benc/Int.h"
 #include "util/version/Version.h"
 
-static void getVersion(Dict* args, void* vadmin, String* txid)
+static void getVersion(Dict* input, void* vadmin, String* txid)
 {
-    Dict d = Dict_CONST(String_CONST("q"), String_OBJ(String_CONST("test")), NULL);
+    Dict d = Dict_CONST(String_CONST("q"), String_OBJ(String_CONST("pong")), NULL);
     Admin_sendMessage(&d, txid, (struct Admin*) vadmin);
 }
 
 void Version_admin_register(struct Admin* admin)
 {
-    Admin_registerFunction("Version_getVersion", getVersion, NULL, false, NULL, admin);
+  Admin_registerFunction("Version_getVersion", getVersion, admin, false, NULL, admin);
 }
